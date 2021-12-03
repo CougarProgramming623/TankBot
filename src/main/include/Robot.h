@@ -12,6 +12,7 @@
 #include <frc/Compressor.h>
 #include <frc/Solenoid.h>
 
+#include "DriveTrain.h"
 
 namespace ohs2021 {
 
@@ -32,11 +33,14 @@ public:
 
 private:
 	static Robot* s_Instance;
+
 	frc::Compressor c{0};
 	frc::Solenoid solenoid1{0};
 	frc::Solenoid solenoid2{1};
 	frc::Solenoid solenoid3{2};
 	frc::Solenoid solenoid4{3};
+
+	ohs2021::DriveTrain m_DriveTrain;
 };
 
 }//namespace

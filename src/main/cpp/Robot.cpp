@@ -22,6 +22,7 @@ Robot::Robot() {
 
 void Robot::RobotInit() {
 	wpi::outs() << "Robot Init Started\n";
+	m_DriveTrain.Init();
 }
 
 /**
@@ -34,6 +35,7 @@ void Robot::RobotInit() {
  */
 void Robot::RobotPeriodic() {
 	frc2::CommandScheduler::GetInstance().Run();
+	m_DriveTrain.Drive(0, 0);
 }
 
 /**
