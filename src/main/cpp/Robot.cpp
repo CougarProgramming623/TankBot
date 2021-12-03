@@ -6,14 +6,21 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
-
+#include "frc2/command/InstantCommand.h"
 
 
 namespace ohs2021 {
 
 	Robot* Robot::s_Instance = nullptr;
 
-Robot::Robot() {
+Robot::Robot() :
+
+m_GearboxToggle([&]{
+
+	return m_DriverJoystick.GetRawButton(1);
+
+	})
+{
 
 	s_Instance = this;
 
@@ -23,6 +30,11 @@ Robot::Robot() {
 void Robot::RobotInit() {
 	wpi::outs() << "Robot Init Started\n";
 	m_DriveTrain.Init();
+	m_GearboxToggle.WhenPressed(frc2::InstantCommand([&]{
+
+		m_Solenoid0.Toggle();
+		
+	}));
 }
 
 /**
@@ -66,10 +78,10 @@ void Robot::AutonomousPeriodic() {
 
 void Robot::TeleopInit() {
 	wpi::outs() << "Teleop Init Started\n";
-	solenoid1.Set(false);
-	solenoid2.Set(true);
-	solenoid3.Set(true);
-	solenoid4.Set(true);
+	m_Solenoid0.Set(false); //drivetrain
+	m_Solenoid1.Set(true);
+	m_Solenoid2.Set(true); //claw
+	m_Solenoid3.Set(true);
 }
 
 /**

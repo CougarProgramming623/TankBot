@@ -17,11 +17,7 @@ void DriveTrain::Init(){
 
 void DriveTrain::Drive(double x, double y){
     m_LeftBottom.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, .1);
-//m_LeftTop.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, .1);
-
-
     m_RightBottom.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, -.1);
-    //m_RightTop.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, .1);
 }
 
 } //namespace

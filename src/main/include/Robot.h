@@ -11,6 +11,8 @@
 #include <frc2/command/Command.h>
 #include <frc/Compressor.h>
 #include <frc/Solenoid.h>
+#include <frc/Joystick.h>
+#include <frc2/command/button/JoystickButton.h>
 
 #include "DriveTrain.h"
 
@@ -35,12 +37,14 @@ private:
 	static Robot* s_Instance;
 
 	frc::Compressor c{0};
-	frc::Solenoid solenoid1{0};
-	frc::Solenoid solenoid2{1};
-	frc::Solenoid solenoid3{2};
-	frc::Solenoid solenoid4{3};
+	frc::Solenoid m_Solenoid0{0};
+	frc::Solenoid m_Solenoid1{1};
+	frc::Solenoid m_Solenoid2{2};
+	frc::Solenoid m_Solenoid3{3};
 
 	ohs2021::DriveTrain m_DriveTrain;
+	frc2::Button m_GearboxToggle;
+	frc::Joystick m_DriverJoystick{0};
 };
 
 }//namespace
