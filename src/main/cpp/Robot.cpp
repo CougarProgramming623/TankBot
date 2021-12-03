@@ -64,7 +64,10 @@ void Robot::AutonomousPeriodic() {
 
 void Robot::TeleopInit() {
 	wpi::outs() << "Teleop Init Started\n";
-	m_DriveTrain.SetBrakeMode(true);
+	solenoid1.Set(false);
+	solenoid2.Set(true);
+	solenoid3.Set(true);
+	solenoid4.Set(true);
 }
 
 /**
@@ -79,8 +82,10 @@ void Robot::TeleopPeriodic() {
 
 
 int main() {
-	return frc::StartRobot<ohs2020::Robot>();
+	return frc::StartRobot<ohs2021::Robot>();
 }
+
+
 
 bool CanAssertionsQuit() {
 	return true;//Maybe disable during competitions

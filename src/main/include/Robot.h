@@ -9,6 +9,8 @@
 
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
+#include <frc/Compressor.h>
+#include <frc/Solenoid.h>
 
 
 namespace ohs2021 {
@@ -25,12 +27,16 @@ public:
 	void AutonomousPeriodic() override;
 	void TeleopInit() override;
 	void TeleopPeriodic() override;
-	void TestPeriodic() override;
 	inline static Robot& Get() { return *s_Instance; } 
 
 
 private:
 	static Robot* s_Instance;
+	frc::Compressor c{0};
+	frc::Solenoid solenoid1{0};
+	frc::Solenoid solenoid2{1};
+	frc::Solenoid solenoid3{2};
+	frc::Solenoid solenoid4{3};
 };
 
 }//namespace
