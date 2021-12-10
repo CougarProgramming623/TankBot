@@ -31,6 +31,7 @@ public:
 	void TeleopInit() override;
 	void TeleopPeriodic() override;
 	inline static Robot& Get() { return *s_Instance; } 
+	frc::Solenoid& getGearSolenoid() {return m_Solenoid0; }
 
 
 private:
@@ -43,8 +44,7 @@ private:
 	frc::Solenoid m_Solenoid3{3};
 
 	ohs2021::DriveTrain m_DriveTrain;
-	frc2::Button m_GearboxToggle;
-	frc::Joystick m_DriverJoystick{0};
+	
 };
 
 }//namespace

@@ -13,28 +13,14 @@ namespace ohs2021 {
 
 	Robot* Robot::s_Instance = nullptr;
 
-Robot::Robot() :
-
-m_GearboxToggle([&]{
-
-	return m_DriverJoystick.GetRawButton(1);
-
-	})
-{
-
-	s_Instance = this;
-
-}
+Robot::Robot() {
+	    s_Instance = this;
+};
 
 
 void Robot::RobotInit() {
 	wpi::outs() << "Robot Init Started\n";
 	m_DriveTrain.Init();
-	m_GearboxToggle.WhenPressed(frc2::InstantCommand([&]{
-
-		m_Solenoid0.Toggle();
-		
-	}));
 }
 
 /**
@@ -47,7 +33,6 @@ void Robot::RobotInit() {
  */
 void Robot::RobotPeriodic() {
 	frc2::CommandScheduler::GetInstance().Run();
-	m_DriveTrain.Drive(0, 0);
 }
 
 /**
@@ -88,7 +73,7 @@ void Robot::TeleopInit() {
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
-
+	m_DriveTrain.Driving();
 }
 
 
