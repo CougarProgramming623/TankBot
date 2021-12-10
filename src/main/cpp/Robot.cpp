@@ -7,6 +7,7 @@
 
 #include "Robot.h"
 #include "frc2/command/InstantCommand.h"
+#include "ohs/RobotID.h"
 
 
 namespace ohs2021 {
@@ -29,6 +30,7 @@ m_GearboxToggle([&]{
 
 void Robot::RobotInit() {
 	wpi::outs() << "Robot Init Started\n";
+
 	m_DriveTrain.Init();
 	m_GearboxToggle.WhenPressed(frc2::InstantCommand([&]{
 

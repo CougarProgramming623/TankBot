@@ -1,17 +1,22 @@
 #include "DriveTrain.h"
+#include "ohs/RobotID.h"
 
 namespace ohs2021{
 
+using namespace ohs623; 
+
 DriveTrain::DriveTrain() :
-    m_LeftBottom (1),
-    m_LeftTop (2),
-    m_RightBottom (3),
-    m_RightTop (4)
+    m_LeftBottom (RobotID::GetMotorID(LEFT_BOTTOM)),
+    m_LeftTop (RobotID::GetMotorID(LEFT_TOP)),
+    m_RightBottom (RobotID::GetMotorID(RIGHT_BOTTOM)),
+    m_RightTop (RobotID::GetMotorID(RIGHT_TOP))
 {};
 
 void DriveTrain::Init(){
-    m_LeftTop.Set(ctre::phoenix::motorcontrol::ControlMode::Follower, 1);
-    m_RightTop.Set(ctre::phoenix::motorcontrol::ControlMode::Follower, 3);
+    m_LeftTop.Set(ctre::phoenix::motorcontrol::ControlMode::Follower, RobotID::GetMotorID(LEFT_BOTTOM));
+    m_RightTop.Set(ctre::phoenix::motorcontrol::ControlMode::Follower, RobotID::GetMotorID(RIGHT_BOTTOM));
+
+    
 
 }
 
