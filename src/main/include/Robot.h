@@ -31,7 +31,7 @@ public:
 	void TeleopInit() override;
 	void TeleopPeriodic() override;
 	inline static Robot& Get() { return *s_Instance; } 
-	frc::Solenoid& getGearSolenoid() {return m_Solenoid0; }
+	frc::Solenoid& getGearSolenoid() { return m_Solenoid2; }
 
 
 private:
